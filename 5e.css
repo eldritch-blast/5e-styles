@@ -76,10 +76,10 @@
   body {
     color: #111; } }
 @media only screen and (max-width: 500px) {
-  .chapter {
+  section:not(.cover) {
     margin: 1em; } }
 @media only screen and (min-width: 501px) {
-  .chapter {
+  section:not(.cover) {
     margin: 1.5cm;
     columns: 2 300px;
     column-gap: 1cm;
@@ -107,7 +107,7 @@ main {
   counter-increment: chapter;
   content: counter(chapter) ". "; }
 
-.frontmatter {
+.cover {
   height: 100%;
   width: 100%;
   display: flex;
