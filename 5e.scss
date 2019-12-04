@@ -1,0 +1,434 @@
+$grey: #999;
+$light-grey: #ddd;
+$dark-grey: #777;
+$black: #111;
+
+@font-face {
+    font-family: "Bookinsanity";
+    src: url("./solbera-dnd-fonts/Bookinsanity/Bookinsanity.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Bookinsanity Bold Italic";
+    src: url("./solbera-dnd-fonts/Bookinsanity/Bookinsanity Bold Italic.otf") format("opentype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Bookinsanity Bold";
+    src: url("./solbera-dnd-fonts/Bookinsanity/Bookinsanity Bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Bookinsanity Italic";
+    src: url("./solbera-dnd-fonts/Bookinsanity/Bookinsanity Italic.otf") format("opentype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Nodesto Caps Condensed";
+    src: url("./solbera-dnd-fonts/Nodesto Caps Condensed/Nodesto Caps Condensed.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Mr Eaves Small Caps";
+    src: url("./solbera-dnd-fonts/Mr Eaves/Mr Eaves Small Caps.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Scaly Sans";
+    src: url("./solbera-dnd-fonts/Scaly Sans/Scaly Sans.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Scaly Sans Bold Italic";
+    src: url("./solbera-dnd-fonts/Scaly Sans/Scaly Sans Bold Italic.otf") format("opentype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Scaly Sans Bold";
+    src: url("./solbera-dnd-fonts/Scaly Sans/Scaly Sans Bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Scaly Sans Caps Bold";
+    src: url("./solbera-dnd-fonts/Scaly Sans Caps/Scaly Sans Caps Bold.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Solbera Imitation";
+    src: url("./solbera-dnd-fonts/Solbera Imitation/Solbera Imitation.otf") format("opentype");
+    font-weight: normal;
+}
+
+@media print {
+    body {
+        color: black;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .chapter {
+        margin: 1.5cm;
+        column-gap: 1cm;
+        columns: 2 calc(calc(8.5in - 4cm) / 2);
+    }
+
+// page directives aren't really implemented in browsers, so we need to hack pages. For now we'll assume 1 section = 1 page
+    @page {
+        size: 8.5in 11in;
+//        margin-top: 2cm;
+//        margin-bottom: 3cm;
+    }
+
+    @page :left {
+//        margin-left: 2cm;
+//        margin-right: 3cm;
+        @bottom-left {
+            content: counter(page);
+        }
+    }
+
+    @page :right {
+//        margin-left: 3cm;
+//        margin-right: 2cm;
+        @bottom-right {
+            content: counter(page);
+        }
+    }
+}
+
+@media screen {
+    body {
+        color: $black;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .chapter {
+        margin: 1em;
+    }
+}
+
+@media only screen and (min-width:501px) {
+    .chapter {
+        margin: 1.5cm;
+        columns: 2 300px;
+        column-gap: 1cm;
+        max-width: 11.25in;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bookinsanity', serif;
+    text-rendering: optimizeLegibility;
+
+    margin: 0;
+
+    counter-reset: chapter;
+}
+
+.chapter {
+    page-break-before: always;
+}
+
+.chapter h1:before {
+    counter-increment: chapter;
+    content: counter(chapter) ". ";
+}
+
+h2, h3, h4, h5 {
+    font-family: 'Mr Eaves Small Caps', serif;
+    font-variant: small-caps;
+}
+
+h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+}
+
+h2 {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    column-span: all;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 24px;
+    border-bottom: 2px solid $dark-grey;
+    margin-top: 1rem;
+    margin-bottom: 2px;
+}
+
+h5 {
+    font-size: 18px;
+    margin-top: 1rem;
+    margin-bottom: 2px;
+}
+
+p {
+    line-height: 1.4;
+    margin: 0;
+}
+
+p + p {
+    text-indent: 1em;
+}
+
+h2 + p {
+    position: relative;
+    margin: auto;
+    min-height: 7.125em;
+}
+
+h2 + p::first-letter {
+    font-family: 'Solbera Imitation', serif;
+    color: $dark-grey;
+    float: left;
+    font-size: 7.125em;
+    line-height: 0.8;
+    padding-right: 0.3rem;
+}
+
+h2 + p::first-line {
+    font-family: 'Mr Eaves Small Caps', serif;
+    font-variant: small-caps;
+    font-size: 20px;
+    line-height: 1;
+}
+
+// This would be h6 with display: run-in if it had browser support
+span.subhead {
+    font-family: 'Bookinsanity Bold Italic', serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+span.subhead:after {
+    content: '.';
+}
+
+table {
+    width: 100%;
+    page-break-inside: avoid;
+    font-family: 'Scaly Sans', sans-serif;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    float: right;
+
+    caption {
+        font-family: 'Scaly Sans Bold', sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    td, th {
+        padding: 2px 0.4rem;
+    }
+
+    .bg {
+        background-color: $light-grey;
+    }
+
+    .left {
+        text-align: left;
+    }
+    .center {
+        text-align: center;
+    }
+    .right {
+        text-align: right;
+    }
+    .top {
+        vertical-align: top;
+    }
+    .middle {
+        vertical-align: center;
+    }
+    .bottom {
+        vertical-align: bottom;
+    }
+
+    .subhead {
+        font-family: 'Scaly Sans Bold Italic', sans-serif;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    .bold {
+        font-family: 'Scaly Sans Bold', sans-serif;
+        font-weight: bold;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .columns {
+            columns: 2 auto;
+            column-gap: 0.5em;
+        }
+    }
+
+    @media only screen and (min-width: 501px) {
+        .columns {
+            columns: 9.6em auto;
+            column-gap: 0.5em;
+        }
+    }
+}
+
+table.striped {
+    > tbody:nth-of-type(odd) {
+        background-color: $light-grey;
+    }
+    > tbody:only-of-type {
+        background-color: transparent;
+        tr:nth-child(odd) {
+            background-color: $light-grey;
+        }
+    }
+}
+
+ul.simple {
+    margin: 0;
+    padding: 0 0 0.5em 1em;
+    list-style: none;
+    white-space: nowrap;
+}
+
+aside {
+    font-family: 'Scaly Sans', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+
+    float: right;
+    margin: calc(1em + 16px) 0;
+
+    .title {
+        font-family: 'Scaly Sans Caps Bold', sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        font-variant: small-caps;
+        margin-top: 0;
+    }
+
+    .content {
+        padding: 5px 10px;
+        background-color: $light-grey;
+        box-shadow: 1px 4px 14px #888;
+        p {
+            line-height: 1.2;
+        }
+    }
+
+    .border {
+        width: 100%;
+    }
+    .top:before {
+        position: absolute;
+        top: -12px;
+        left: 0;
+        border-top: 11px solid transparent;
+        border-right: 24px solid black;
+        border-bottom: 1px solid black;
+        content: '';
+    }
+    .top:after {
+        position: absolute;
+        top: -12px;
+        right: 0;
+        border-top: 11px solid transparent;
+        border-left: 24px solid black;
+        border-bottom: 1px solid black;
+        content: '';
+    }
+    .top {
+        position: relative;
+        border-bottom: 3px solid black;
+    }
+    .bottom:before {
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        border-top: 1px solid black;
+        border-right: 24px solid black;
+        border-bottom: 11px solid transparent;
+        content: '';
+    }
+    .bottom:after {
+        position: absolute;
+        bottom: -12px;
+        right: 1px;
+        border-top: 1px solid black;
+        border-left: 24px solid black;
+        border-bottom: 11px solid transparent;
+        content: '';
+    }
+    .bottom {
+        position: relative;
+        border-top: 3px solid black;
+    }
+}
+
+.wide {
+    column-span: all;
+}
+
+.normal {
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+}
+
+.term {
+    font-family: 'Bookinsanity Bold', serif;
+    font-weight: bold;
+}
+
+.spell, .magic-item {
+    font-family: 'Bookinsanity Italic', serif;
+    font-style: italic;
+}
+
+.book-title {
+    font-style: italic;
+}
+
+.sc {
+    font-family: 'Mr Eaves Small Caps', serif;
+    font-variant: small-caps;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.hang-indent {
+    text-indent: -1em;
+    padding-left: 1em;
+}
+
+.group {
+    page-break-inside: avoid;
+}
