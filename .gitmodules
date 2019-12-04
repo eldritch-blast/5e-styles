@@ -1,0 +1,3 @@
+[submodule "solbera-dnd-fonts"]
+	path = solbera-dnd-fonts
+	url = https://github.com/benlk/solbera-dnd-fonts.git
