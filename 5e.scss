@@ -37,6 +37,12 @@ $black: #111;
 }
 
 @font-face {
+    font-family: "Nodesto Caps Condensed Bold";
+    src: url("./solbera-dnd-fonts/Nodesto Caps Condensed/Nodesto Caps Condensed.otf") format("opentype");
+    font-weight: bold;
+}
+
+@font-face {
     font-family: "Mr Eaves Small Caps";
     src: url("./solbera-dnd-fonts/Mr Eaves/Mr Eaves Small Caps.otf") format("opentype");
     font-weight: normal;
@@ -139,22 +145,40 @@ $black: #111;
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Bookinsanity', serif;
     text-rendering: optimizeLegibility;
 
+    height: 100%;
     margin: 0;
 
     counter-reset: chapter;
+}
+
+main {
+    height: 100%;
 }
 
 .chapter {
     page-break-before: always;
 }
 
-.chapter h1:before {
+.chapter h2:before {
     counter-increment: chapter;
     content: counter(chapter) ". ";
+}
+
+.frontmatter {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h2, h3, h4, h5 {
@@ -164,6 +188,16 @@ h2, h3, h4, h5 {
 
 h2, h3, h4, h5, h6 {
     page-break-after: avoid;
+}
+
+h1 {
+    font-size: 96px;
+    font-family: 'Nodesto Caps Condensed Bold', serif;
+    font-variant: small-caps;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 2px #000, -1px 1px 2px #000, 1px -1px 2px #000, -1px -1px 2px #000;
 }
 
 h2 {
