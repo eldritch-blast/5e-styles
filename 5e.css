@@ -138,7 +138,9 @@ h2 {
   column-span: all; }
 
 h3 {
-  font-size: 32px; }
+  font-size: 32px;
+  margin-top: 1rem;
+  margin-bottom: 5px; }
 
 h4 {
   font-size: 24px;
