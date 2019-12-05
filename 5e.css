@@ -77,13 +77,36 @@
     color: #111; } }
 @media only screen and (max-width: 500px) {
   section:not(.cover) {
-    margin: 1em; } }
+    margin: 1em; }
+
+  .diamond {
+    width: 0;
+    height: 0;
+    border: 180px solid transparent;
+    border-bottom: 3px solid #ddd;
+    position: relative;
+    top: -150px;
+    margin: auto;
+    margin-bottom: -120px; }
+
+  .diamond:after {
+    position: absolute;
+    left: -180px;
+    top: 3px;
+    width: 0;
+    height: 0;
+    border: 180px solid transparent;
+    border-top: 3px solid #ddd;
+    content: ''; } }
 @media only screen and (min-width: 501px) {
   section:not(.cover) {
     margin: 1.5cm;
     columns: 2 300px;
     column-gap: 1cm;
-    max-width: 11.25in; } }
+    max-width: 11.25in; }
+
+  .diamond {
+    display: none; } }
 * {
   box-sizing: border-box; }
 
@@ -100,7 +123,7 @@ body {
 main {
   height: 100%; }
 
-.chapter {
+section {
   page-break-before: always; }
 
 .chapter h2:before {
@@ -170,8 +193,9 @@ h2 + p::first-letter {
   color: #777;
   float: left;
   font-size: 7.125em;
-  line-height: 0.8;
-  padding-right: 0.3rem; }
+  line-height: 0.9;
+  padding-right: 0.3rem;
+  margin-top: -5px; }
 
 h2 + p::first-line {
   font-family: 'Mr Eaves Small Caps', serif;
@@ -318,6 +342,10 @@ aside {
 .spell, .magic-item {
   font-family: 'Bookinsanity Italic', serif;
   font-style: italic; }
+
+.strong {
+  font-family: 'Bookinsanity Bold', serif;
+  font-weight: bold; }
 
 .book-title {
   font-style: italic; }

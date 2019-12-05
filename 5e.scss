@@ -130,6 +130,30 @@ $black: #111;
     section:not(.cover) {
         margin: 1em;
     }
+
+    // .diamond is a divider for sections in a long scrolling
+    // mobile doc, where "chapter" breaks are less obvious
+    .diamond {
+        width: 0;
+        height: 0;
+        border: 180px solid transparent;
+        border-bottom: 3px solid $light-grey;
+        position: relative;
+        top: -150px;
+        margin: auto;
+        margin-bottom: -120px;
+    }
+
+    .diamond:after {
+        position: absolute;
+        left: -180px;
+        top: 3px;
+        width: 0;
+        height: 0;
+        border: 180px solid transparent;
+        border-top: 3px solid $light-grey;
+        content: '';
+    }
 }
 
 @media only screen and (min-width:501px) {
@@ -138,6 +162,10 @@ $black: #111;
         columns: 2 300px;
         column-gap: 1cm;
         max-width: 11.25in;
+    }
+
+    .diamond {
+        display: none;
     }
 }
 
@@ -163,7 +191,7 @@ main {
     height: 100%;
 }
 
-.chapter {
+section {
     page-break-before: always;
 }
 
@@ -246,8 +274,9 @@ h2 + p::first-letter {
     color: $dark-grey;
     float: left;
     font-size: 7.125em;
-    line-height: 0.8;
+    line-height: 0.9;
     padding-right: 0.3rem;
+    margin-top: -5px;
 }
 
 h2 + p::first-line {
@@ -449,6 +478,11 @@ aside {
     font-style: italic;
 }
 
+.strong {
+    font-family: 'Bookinsanity Bold', serif;
+    font-weight: bold;
+}
+
 .book-title {
     font-style: italic;
 }
@@ -468,3 +502,5 @@ aside {
 .group {
     page-break-inside: avoid;
 }
+
+
